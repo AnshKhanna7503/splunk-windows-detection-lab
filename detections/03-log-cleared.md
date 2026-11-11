@@ -22,7 +22,7 @@ Scheduled every 5 minutes, searching the last 5 minutes. Triggers when results >
 
 ## L1 triage steps
 1. Identify which account cleared the log and on which host
-2. Check what happened just before (suspicious logons, new accounts, new services)
+2. Check what happened just before (suspicious logins, new accounts, new services)
 3. Confirm whether this was a planned change
 4. Check whether logs were already forwarded off the machine
 
@@ -30,4 +30,4 @@ Scheduled every 5 minutes, searching the last 5 minutes. Triggers when results >
 Log clearing outside an approved change window goes to L2.
 
 ## Evidence
-![Alert firing](../screenshots/03-log-cleared-alert.png)
+![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/00-all-alerts-triggered-before-tuning.pngg)
