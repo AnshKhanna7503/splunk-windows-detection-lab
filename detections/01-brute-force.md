@@ -1,3 +1,5 @@
+# Detection 01: Brute Force (Multiple Failed Logons)
+
 MITRE ATT&CK: T1110 (Brute Force)
 Severity: Medium
 Log source: Windows Security log, EventCode 4625 (failed logon)
