@@ -1,0 +1,42 @@
+MITRE ATT&CK: T1110 (Brute Force)
+Severity: Medium
+Log source: Windows Security log, EventCode 4625 (failed logon)
+
+## What it detects
+Five or more failed logons on the same host within a 5-minute window. This pattern suggests password guessing against a local or network account.
+
+## SPL
+```
+index=win_lab source="WinEventLog:Security" EventCode=4625
+| eval target_account=mvindex(Account_Name,-1)
+| bin _time span=5m
+| stats count values(target_account) as accounts values(Source_Network_Address) as src by _time, host
+| where count>=5
+```
+
+## Alert settings
+Scheduled every 5 minutes (`*/5 * * * *`), searching the last 5 minutes. Triggers when results > 0.
+
+## Tuning notes
+- **Wrong account names:** 4625 events contain two `Account_Name` values: the account that made the request (here the machine account, ending in `$`) and the target account that failed to log in. The first version of the query listed both. Using `mvindex(Account_Name,-1)` keeps only the target account.
+- **Duplicate alerts:** the alert initially searched the last 15 minutes while running every 5, so the same events triggered it about three times. Matching the time range to the schedule fixed this.
+- **Threshold:** set to 5 failures per 5 minutes for this lab. A production threshold would depend on the environment's normal failure rate.
+
+## Possible false positives
+- A user mistyping their password
+- A service or scheduled task with an expired or changed password
+- A misconfigured application retrying with old credentials
+
+## L1 triage steps
+1. Check the target account(s) and the source IP (`src`). Internal, external, or unusual?
+2. Check whether a successful logon (EventCode 4624) followed the failures for the same account, which could mean the guessing worked
+3. Check whether the targeted account is privileged (admin or service account)
+4. Look at the logon type in the event details to see whether it was local, network, or remote desktop
+5. Contact the account owner if the activity looks like a lockout or forgotten password
+
+## Escalation
+Failures followed by a successful logon, failures against privileged accounts, or activity from an unexpected external IP go to L2.
+
+## Evidence
+![Search results](../screenshots/01-brute-force-results.png)
+![Alert firing](../screenshots/01-brute-force-alert-fired.png)
