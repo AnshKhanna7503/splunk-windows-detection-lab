@@ -1,4 +1,4 @@
-# Detection 01: Brute Force (Multiple Failed Logons)
+# Detection 01: Brute Force (Multiple Failed Logins)
 
 MITRE ATT&CK: T1110 (Brute Force)
 Severity: Medium
