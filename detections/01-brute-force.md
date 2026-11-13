@@ -13,6 +13,7 @@ index=win_lab source="WinEventLog:Security" EventCode=4625
 | eval target_account=mvindex(Account_Name,-1)
 | stats count values(target_account) as accounts values(Source_Network_Address) as src by host
 | where count>=5
+-
 
 ## Alert settings
 Scheduled every 5 minutes (`*/5 * * * *`), searching the last 5 minutes. Triggers when results > 0.
