@@ -12,7 +12,7 @@ Someone cleared the Windows Security event log. Attackers do this to hide eviden
 index=win_lab source="WinEventLog:Security" EventCode=1102
 | rex field=Message "Subject:\s+Security ID:\s+\S+\s+Account Name:\s+(?<actor>\S+)"
 | table _time, host, actor, EventCode
-​```
+```
 
 ## Alert settings
 Scheduled every 5 minutes, searching the last 5 minutes. Triggers when results > 0.
