@@ -32,4 +32,4 @@ Log clearing outside an approved change window goes to L2.
 
 ## Evidence
 ![Search Results](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/03-log-cleared-search-results.png)
-![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/00-all-alerts-triggered-before-tuning.png)
+![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/03-log-cleared-alert-fired.png)
