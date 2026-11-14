@@ -8,9 +8,10 @@ Log source: Windows Security log, EventCode 1102
 Someone cleared the Windows Security event log. Attackers do this to hide evidence of their activity.
 
 ## SPL
-​```
-index=win_lab EventCode=1102
-| table _time, host, Message
+```spl
+index=win_lab source="WinEventLog:Security" EventCode=1102
+| rex field=Message "Subject:\s+Security ID:\s+\S+\s+Account Name:\s+(?<actor>\S+)"
+| table _time, host, actor, EventCode
 ​```
 
 ## Alert settings
