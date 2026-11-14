@@ -35,4 +35,5 @@ Windows automatically adds new local users to the Users group, which also genera
 Unexpected admin additions, especially right after account creation or outside a change window, go to L2.
 
 ## Evidence
+![Search results](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/02-new-admin-search-results.png)
 ![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/02-new-admin-search-results.png)
