@@ -5,14 +5,14 @@ Severity: Medium
 Log source: Windows Security log, EventCodes 4720 (user created) and 4732 (member added to local group)
 
 ## What it detects
-A local account was added to the Administrators group. Attackers do this to keep privileged access (persistence) or to escalate privileges.
+A local account was added to the Administrators group. Attackers do this to maintain privileged persistence or escalate privileges.
 
 ## SPL
-```
+```spl
 index=win_lab source="WinEventLog:Security" EventCode=4732 Group_Name="Administrators"
-| table _time, host, Account_Name, Group_Name, Message
-
-The query extracts the member’s SID from the event message because Windows logs local accounts by SID only.
+| eval actor=mvindex(Account_Name,0)
+| rex field=Message "Member:\s+Security ID:\s+(?<member_sid>S-[\d-]+)"
+| table _time, host, actor, Group_Name, member_sid
 ```
 
 ## Alert settings
