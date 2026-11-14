@@ -31,4 +31,5 @@ Scheduled every 5 minutes, searching the last 5 minutes. Triggers when results >
 Log clearing outside an approved change window goes to L2.
 
 ## Evidence
+![Search Results]()
 ![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/00-all-alerts-triggered-before-tuning.png)
