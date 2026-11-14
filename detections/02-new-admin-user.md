@@ -36,4 +36,4 @@ Unexpected admin additions, especially right after account creation or outside a
 
 ## Evidence
 ![Search results](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/02-new-admin-search-results.png)
-![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/02-new-admin-search-results.png)
+![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/02-new-admin-alert-fired.png)
