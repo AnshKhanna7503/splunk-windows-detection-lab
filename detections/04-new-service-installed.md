@@ -17,24 +17,25 @@ index=win_lab source="WinEventLog:System" EventCode=7045
 | table _time, host, service_name, service_path, start_type
 ```
 
-Alert settings
+## Alert settings
 Scheduled every 5 minutes, searching the last 5 minutes. Triggers when results > 0.
 
-Possible false positives
-Legitimate software installations or Windows feature updates
+## Tuning notes
+- **Legitimate software updates:** Routine updates for browsers, drivers, or endpoint agents occasionally register temporary services. In production, known vendor service paths under `C:\Program Files\` can be baselined while prioritizing services executing from `Users`, `Temp`, `AppData`, or inline `cmd.exe`/`powershell.exe` commands.
 
-IT administration or endpoint management agents deploying packages
+## Possible false positives
+- Legitimate software installations or Windows feature updates
+- IT administration or endpoint management agents deploying packages
 
-L1 triage steps
-Inspect service_path to see what binary or command the service executes and where it resides on disk.
+## L1 triage steps
+1. Inspect `service_path` to see what binary or command the service executes and where it resides on disk.
+2. Check if `service_path` invokes `cmd.exe`, `powershell.exe`, `rundll32.exe`, or points to a user-writable directory (`Temp`, `AppData`, `Users`, `Public`).
+3. Correlate with Security logs (`EventCode=4624` / `4672`) around `_time` to identify which user account authenticated and registered the service.
+4. Check the binary hash and digital signature of the executable on `host`.
 
-Check if service_path invokes cmd.exe, powershell.exe, rundll32.exe, or points to a user-writable directory (Temp, AppData, Users, Public).
-
-Correlate with Security logs (EventCode=4624 / 4672) around _time to identify which user account authenticated and registered the service.
-
-Check the binary hash and digital signature of the executable on host.
-
-Escalation
+## Escalation
 Any service pointing to an unsigned binary, script interpreter, or non-standard directory outside an approved software deployment escalates immediately to L2.
 
-Evidence
+## Evidence
+![Search results](../screenshots/04-new-service-search-results.png)
+![Alert firing](../screenshots/04-new-service-alert-fired.png)
