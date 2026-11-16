@@ -27,5 +27,5 @@ Scheduled every 5 minutes, searching the last 5 minutes. Triggers when Number of
 Any unrecognized executable or script dropped by a built-in Windows utility into a public or temporary directory should be immediately escalated to L2 for malware analysis, endpoint isolation, and credential revocation.
 
 ## Evidence
-![Search results](../screenshots/05-sysmon-file-search.png)
+![Search results](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/05-sysmon-file-search.png)
 ![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/05-sysmon-file-alert.png)
