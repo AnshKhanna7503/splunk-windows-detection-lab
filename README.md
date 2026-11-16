@@ -24,6 +24,9 @@ Each detection includes the SPL query, trigger conditions, false positive analys
 4. **[Detection 04: Persistence - New Windows Service Installed](detections/04-new-service-installed.md)**
    * **MITRE ATT&CK:** T1543.003 (Windows Service)
    * **Log Source:** System `EventCode=7045`
+5. [Detection 05: Suspicious Payload Delivery (LOLBin)](detections/05-sysmon-file-creation.md)
+   * **MITRE ATT&CK:** T1105 (Ingress Tool Transfer)
+   * **Log Source:** Sysmon `EventCode=11`
 
 ## Alert Tuning & Noise Reduction
 During the initial deployment of the scheduled alerts, overlapping search windows resulted in duplicate alert triggers for single events.
