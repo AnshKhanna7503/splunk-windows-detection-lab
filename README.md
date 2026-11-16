@@ -7,7 +7,7 @@ This repository contains a series of custom Splunk detection rules designed to i
 * **Target Host:** Windows 10/11 (`LAPTOP-KLRQ0OUG`)
 * **SIEM:** Splunk Enterprise
 * **Index:** `win_lab`
-* **Telemetry Sources:** `WinEventLog:Security`, `WinEventLog:System`
+* **Telemetry Sources:** `WinEventLog:Security`, `WinEventLog:System`, `Sysmon`
 
 ## Detection Rules
 Each detection includes the SPL query, trigger conditions, false positive analysis, and Level 1 triage steps. 
