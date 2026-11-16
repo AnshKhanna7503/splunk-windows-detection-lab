@@ -28,4 +28,4 @@ Any unrecognized executable or script dropped by a built-in Windows utility into
 
 ## Evidence
 ![Search results](../screenshots/05-sysmon-file-search.png)
-![Alert firing](../screenshots/05-sysmon-file-alert.png)
+![Alert firing](https://github.com/AnshKhanna7503/splunk-windows-detection-lab/blob/main/screenshots/05-sysmon-file-alert.png)
